@@ -1,0 +1,28 @@
+version: "3.7"
+
+services:
+  web:
+    container_name: web
+    build:
+      context: ./services/web/
+      dockerfile: Dockerfile
+    volumes:
+      - "./services/web:/app"
+      - "/app/node_modules"
+    ports:
+      - 3001:3000
+    environment:
+      - CHOKIDAR_USEPOLLING=true
+
+  main:
+    container_name: main
+    build:
+      context: ./services/main/
+      dockerfile: Dockerfile
+    volumes:
+      - "./services/main:/main"
+      - "/app/node_modules"
+    ports:
+      - 3001:3000
+    environment:
+      - CHOKIDAR_USEPOLLING=true

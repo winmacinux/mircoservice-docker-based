@@ -10,7 +10,7 @@ services:
       - "./services/web:/app"
       - "/app/node_modules"
     ports:
-      - 3001:3000
+      - 81:80
     environment:
       - CHOKIDAR_USEPOLLING=true
 
@@ -21,7 +21,7 @@ services:
       dockerfile: Dockerfile
     volumes:
       - "./services/main:/main"
-      - "/app/node_modules"
+      - "/main/node_modules"
     ports:
       - 3001:3000
     environment:
